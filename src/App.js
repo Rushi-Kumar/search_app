@@ -102,7 +102,7 @@ class App extends React.Component {
     payload.q = searchValue // assign searchvalue to "q" key, as it has to be sent as q in query parameters
     await this.setState({payload}) // store the paylaod for last search
     try {
-      await this.setState({fetchingResults:true,searchTitle:"Please wait while fetch the results ..."})
+      await this.setState({fetchingResults:true,searchTitle:"Please wait while fetch the results ...",searchResult:{ hits:[] }})
       let searchResult = await API.getSearchResult(this.state.payload)
       let searchTitle = this.prepareSearchTitle({...this.state.payload})
       await this.setState({fetchingResults:false,error:false,searchTitle,searchResult})
